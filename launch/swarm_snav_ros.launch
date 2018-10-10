@@ -40,7 +40,7 @@
 
 <group ns="$(arg nameSpace)">
   <node pkg="snav_ros" name="snav_interface_node" type="snav_interface_node" output="screen">
-    <param name="loop_frequency" value="120.0"/>
+    <param name="loop_frequency" value="100.0"/>
     <param name="low_freq_data_rate" value="5.0"/>
 
     <param name="base_link_frame" value="/base_link"/>
