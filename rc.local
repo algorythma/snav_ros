@@ -14,6 +14,7 @@
 # Generate the SSH keys if non-existent
 test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
 
+sudo ntpdate KL-29
 sleep 2
 cd /home/linaro
 source /opt/ros/indigo/setup.bash
