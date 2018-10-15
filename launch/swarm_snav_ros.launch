@@ -43,7 +43,14 @@
     <param name="loop_frequency" value="100.0"/>
     <param name="low_freq_data_rate" value="5.0"/>
 
-    <param name="base_link_frame" value="/base_link"/>
+    <param name="base_link_frame" value="$(arg nameSpace)/base_link"/>
+    <param name="estimation_frame" value="$(arg nameSpace)/odom"/>
+    <param name="gps_enu_frame" value="$(arg nameSpace)/gps/enu"/>
+    <param name="base_link_stab_frame" value="$(arg nameSpace)/base_link_stab"/>
+    <param name="base_link_no_rot_frame" value="$(arg nameSpace)/base_link_no_rot" />
+    <param name="desired_frame" value="$(arg nameSpace)/desired" />
+    <param name="sim_gt_frame" value="$(arg nameSpace)/sim/ground_truth" />
+    <param name="launch_frame" value="$(arg nameSpace)/launch" />
 
     <param name="write_access" value="$(arg write_access)"/>
     <param name="high_level_actions_only" value="true"/>
@@ -54,9 +61,9 @@
     <param name="planner_config_traj_type" value="MIN_SNAP"/>
     <param name="rx_config_rate" value="200"/>
 
-    <param name="broadcast_tf" value="false"/>
-    <param name="broadcast_des_tf" value="false"/>
-    <param name="broadcast_waypoint_tf" value="false"/>
+    <param name="broadcast_tf" value="true"/>
+    <param name="broadcast_des_tf" value="true"/>
+    <param name="broadcast_waypoint_tf" value="true"/>
     <param name="publish_pose" value="true"/>
     <param name="publish_des_pose" value="true"/>
   </node>
@@ -76,8 +83,8 @@
     <remap from="robot_description" to="vehicle_description"/>
   </node>
 
-  <node name="droneTF" pkg="snav_ros" type="tfPubs.py">
-  </node>
+  <!--<node name="droneTF" pkg="snav_ros" type="tfPubs.py">
+  </node> -->
 
   <node name="base_link_imu_static_publisher" pkg="qflight_descriptions"
         type="base_link_imu_static_publisher.py" output="screen">

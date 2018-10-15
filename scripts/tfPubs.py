@@ -11,6 +11,7 @@ class swarmtfPubs:
         ns = rospy.get_namespace()
         self.drName = ns + "base_link"
         self.odom   = ns + "odom"
+	self.wpName = "waypoint"
         rospy.spin()
 
     def poseCB(self, msg):
@@ -21,5 +22,7 @@ class swarmtfPubs:
                          self.drName,
                          self.odom
                          )
+	wpTF =  tf.TransformBroadcaster()
+	wpTF.sendTransform((0, 0, 0), (0, 0, 0, 0), rospy.Time.now(), self.wpName, self.odom)
 
 s = swarmtfPubs()
