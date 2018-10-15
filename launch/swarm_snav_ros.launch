@@ -54,11 +54,11 @@
     <param name="planner_config_traj_type" value="MIN_SNAP"/>
     <param name="rx_config_rate" value="200"/>
 
-    <param name="broadcast_tf" value="true"/>
-    <param name="broadcast_des_tf" value="true"/>
-    <param name="broadcast_waypoint_tf" value="true"/>
+    <param name="broadcast_tf" value="false"/>
+    <param name="broadcast_des_tf" value="false"/>
+    <param name="broadcast_waypoint_tf" value="false"/>
     <param name="publish_pose" value="true"/>
-    <param name="publish_des_pose" value="false"/>
+    <param name="publish_des_pose" value="true"/>
   </node>
   <arg name="board" default="sdf"/>
   <arg name="vehicle" default="ddk"/>
@@ -74,6 +74,9 @@
   <param name="vehicle_description" textfile="$(find qflight_descriptions)/urdf/$(arg vehicle).urdf"/>
   <node name="vehicle_state_publisher" pkg="robot_state_publisher" type="state_publisher">
     <remap from="robot_description" to="vehicle_description"/>
+  </node>
+
+  <node name="droneTF" pkg="snav_ros" type="tfPubs.py">
   </node>
 
   <node name="base_link_imu_static_publisher" pkg="qflight_descriptions"
