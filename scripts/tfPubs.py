@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import rospy
 import tf
 from geometry_msgs.msg import PoseStamped as ps
