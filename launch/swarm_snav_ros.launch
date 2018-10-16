@@ -51,6 +51,7 @@
     <param name="desired_frame" value="$(arg nameSpace)/desired" />
     <param name="sim_gt_frame" value="$(arg nameSpace)/sim/ground_truth" />
     <param name="launch_frame" value="$(arg nameSpace)/launch" />
+    <param name="waypoint_frame" value="$(arg nameSpace)/waypoint" />
 
     <param name="write_access" value="$(arg write_access)"/>
     <param name="high_level_actions_only" value="true"/>
