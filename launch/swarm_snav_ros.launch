@@ -103,6 +103,8 @@
 <node name="droneMasterSync" pkg="master_sync_fkie" type="master_sync">
 </node>
 
+  <node name="watchdogLander" pkg="snav_ros" type="pingWatchdog.py" />
+
 </launch>
 
 
