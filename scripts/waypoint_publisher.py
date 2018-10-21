@@ -44,6 +44,7 @@ from snav_msgs.msg import WaypointWithConfigArray
 def publish_waypoints():
     pub = rospy.Publisher('input_waypoints', WaypointWithConfigArray,
                           queue_size=10, latch=True)
+    waypoint_list = []
     rospy.init_node('waypoint_publisher', anonymous=False)
     wp_file = sys.argv[1]
     with open(wp_file, 'r') as stream:

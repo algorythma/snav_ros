@@ -54,7 +54,7 @@
     <param name="waypoint_frame" value="$(arg nameSpace)/waypoint" />
 
     <param name="write_access" value="$(arg write_access)"/>
-    <param name="high_level_actions_only" value="true"/>
+    <param name="high_level_actions_only" value="false"/>
     <param name="tx_config_rate" value="200"/>
     <param name="tx_config_desired_mode" value="SN_VIO_POS_HOLD_MODE"/>
     <param name="tx_config_use_traj_tracking" value="true"/>
@@ -67,6 +67,7 @@
     <param name="broadcast_waypoint_tf" value="true"/>
     <param name="publish_pose" value="true"/>
     <param name="publish_des_pose" value="true"/>
+
   </node>
   <arg name="board" default="sdf"/>
   <arg name="vehicle" default="ddk"/>
