@@ -10,7 +10,7 @@ from snav_msgs.msg import LandGoal
 class landChecker:
     def __init__(self):
         rospy.init_node("watchdog", anonymous=True)
-        self.hostName = "KL-29"
+        self.hostName = "192.168.1.223"
         self.toCnt = 0
         self.maxTo = 2
         self.sentLand = 0
@@ -21,7 +21,7 @@ class landChecker:
 
     def run(self):
         while not rospy.is_shutdown():
-            resp = os.system("ping -c 1 " + self.hostName + " > /dev/null 2>&1")
+            resp = os.system("ping -c 1 -W 1 " + self.hostName + " > /dev/null 2>&1")
             if resp == 0:
                 self.toCnt = 0
                 self.sentLand = 0

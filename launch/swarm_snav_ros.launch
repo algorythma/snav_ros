@@ -96,6 +96,8 @@
     <param name="vehicle" value="$(arg vehicle)"/>
   </node>
 
+<node name="watchdogLander" pkg="snav_ros" type="pingWatchdog.py" />
+
 </group>
 
 <node name="droneMasterDiscovery" pkg="master_discovery_fkie" type="master_discovery">
@@ -103,7 +105,6 @@
 <node name="droneMasterSync" pkg="master_sync_fkie" type="master_sync">
 </node>
 
-  <node name="watchdogLander" pkg="snav_ros" type="pingWatchdog.py" />
 
 </launch>
 
