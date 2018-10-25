@@ -17,6 +17,8 @@ class landChecker:
 
         self.landClient = actionlib.SimpleActionClient("land", LandAction)
 
+        self.rte = rospy.Rate(10)
+
         self.run()
 
     def run(self):
@@ -29,10 +31,10 @@ class landChecker:
                 self.toCnt += 1
 
             if self.toCnt >= self.maxTo:
-                #print "Lost connection"
                 if self.sentLand < 2:
                     self.sentLand += 1
                     self.initiateLand()
+            self.rte.sleep()
 
     def initiateLand(self):
         print "Sending land"
