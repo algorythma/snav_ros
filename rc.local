@@ -17,10 +17,10 @@ test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
 sudo ntpdate KL-29 &
 sleep 5
 
-sudo snav -k &
-sleep 3
-sudo snav -w 6000 &
-sleep 2
+#sudo snav -k &
+#sleep 3
+#sudo snav -w 6000 &
+#sleep 2
 
 cd /home/linaro
 source /opt/ros/indigo/setup.bash
