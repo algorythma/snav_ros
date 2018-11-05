@@ -12,7 +12,7 @@ class landChecker:
         rospy.init_node("watchdog", anonymous=True)
         self.hostName = "192.168.1.223"
         self.toCnt = 0
-        self.maxTo = 2
+        self.maxTo = 4
         self.sentLand = 0
 
         self.landClient = actionlib.SimpleActionClient("land", LandAction)
