@@ -100,11 +100,6 @@
 
 </group>
 
-<node name="droneMasterDiscovery" pkg="master_discovery_fkie" type="master_discovery">
-</node>
-<node name="droneMasterSync" pkg="master_sync_fkie" type="master_sync">
-</node>
-
 
 </launch>
 

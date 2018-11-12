@@ -29,6 +29,7 @@ sleep 3
 roscore &
 sleep 3
 roslaunch snav_ros swarm_snav_ros.launch nameSpace:=$HOSTNAME > /dev/null &
+roslaunch snav_ros swarm_multi_master.launch > /dev/null &
 sleep 2 
 
 exit 0
