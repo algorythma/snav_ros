@@ -196,6 +196,13 @@ public:
   void StopPropsCallback(const std_msgs::Empty::ConstPtr& msg);
 
   /**
+   * Callback function to stop propellers in an emergency via ros message
+   * @param msg
+   *   Empty message
+   */
+   void EmergencyStopCallback(const std_msgs::Empty::ConstPtr& msg);
+
+  /**
    * Callback function for adding waypoints to be used in trajectory generation
    */
   void InputWaypointCallback(const snav_msgs::WaypointWithConfigArray::ConstPtr& msg);
