@@ -844,9 +844,7 @@ void SnavInterface::StopPropsCallback(const std_msgs::Empty::ConstPtr& msg)
 
 void SnavInterface::EmergencyStopCallback(const std_msgs::Empty::ConstPtr& msg)
 {
-  int emergency_stop_command[4] = [0, 0, 0, 0];
-  while(1)
-    fci_.sn_send_esc_pwm(emergency_stop_command, 4, -1); 
+  fci_.emergency_stop(); 
 }
 
 void SnavInterface::InputWaypointCallback(const snav_msgs::WaypointWithConfigArray::ConstPtr& msg)
