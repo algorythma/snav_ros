@@ -282,6 +282,7 @@ private:
   ros::Subscriber cmd_vel_subscriber_;
   ros::Subscriber start_props_subscriber_;
   ros::Subscriber stop_props_subscriber_;
+  ros::Subscriber emergency_stop_subscriber_;
   ros::Subscriber waypoint_subscriber_;
 
   ros::Subscriber cmd_type_subscriber_;
