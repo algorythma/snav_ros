@@ -36,7 +36,7 @@
 -->
 <launch>
   <arg name="write_access" default="true"/>
-  <arg name="nameSpace" default="$(optenv HOSTNAME drone)"/>
+  <arg name="nameSpace" default="$(env ROS_HOSTNAME)"/>
 
 <group ns="$(arg nameSpace)">
   <node pkg="snav_ros" name="snav_interface_node" type="snav_interface_node" output="screen">
