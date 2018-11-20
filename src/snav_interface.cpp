@@ -60,7 +60,7 @@ SnavInterface::SnavInterface(ros::NodeHandle nh, ros::NodeHandle pnh,
   cmd_vel_subscriber_ = nh_.subscribe("cmd_vel", 10, &SnavInterface::CmdVelCallback, this);
   start_props_subscriber_ = nh_.subscribe("start_props", 10, &SnavInterface::StartPropsCallback, this);
   stop_props_subscriber_ = nh_.subscribe("stop_props", 10, &SnavInterface::StopPropsCallback, this);
-  emergency_stop_subscriber = nh_.subscribe("emergency_stop", 10, &SnavInterface::EmergencyStopCallback, this)
+  emergency_stop_subscriber = nh_.subscribe("emergency_stop", 10, &SnavInterface::EmergencyStopCallback, this);
   waypoint_subscriber_ = nh_.subscribe("input_waypoints", 10, &SnavInterface::InputWaypointCallback, this);
 
   pnh_.param("gps_enu_frame", gps_enu_frame_, std::string("/gps/enu"));

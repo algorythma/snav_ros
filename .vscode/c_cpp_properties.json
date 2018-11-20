@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/vradhakrishnan/qflight_ws/devel/include",
+        "/home/vradhakrishnan/workspace/catkin/devel/include",
+        "/opt/ros/kinetic/include",
+        "/home/vradhakrishnan/qflight_ws/src/snav_ros/include",
+        "/home/vradhakrishnan/qflight_ws/src/swarm_utils/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}
