@@ -22,6 +22,8 @@ sleep 5
 #sudo snav -w 6000 &
 #sleep 2
 
+export ROS_HOSTNAME=$HOSTNAME
+
 cd /home/linaro
 source /opt/ros/indigo/setup.bash
 source /home/linaro/ros_ws/devel/setup.bash
