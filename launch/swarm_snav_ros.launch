@@ -96,7 +96,8 @@
     <param name="vehicle" value="$(arg vehicle)"/>
   </node>
 
-<node name="watchdogLander" pkg="snav_ros" type="pingWatchdog.py" />
+  <node name="watchdogLander" pkg="snav_ros" type="pingWatchdog.py" />
+  <node name="commander" pkg="snav_ros" type="confExec.py" />
 
 </group>
 
