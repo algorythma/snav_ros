@@ -5,6 +5,8 @@ import rospy
 from std_msgs.msg import String
 import actionlib
 
+from snav_msgs.msg import LandGoal
+from snav_msgs.msg import LandAction
 from snav_msgs.msg import TakeoffGoal
 from snav_msgs.msg import TakeoffAction
 from snav_msgs.msg import ExecuteMissionGoal
@@ -37,6 +39,14 @@ class confExec:
             return
 
         if self.prevCommand == "":
+            if self.currentCommand == "Land":
+                confMsg = String()
+                confMsg.data = "Confirmed Land"
+                self.respPub.publish(confMsg)
+                self.prevCommand = self.currentCommand
+                self.prevExectime = self.execTime
+                self.initiateLand()
+
             if self.currentCommand == "Takeoff":
                 confMsg = String()
                 confMsg.data = "Confirmed Takeoff"
@@ -68,6 +78,13 @@ class confExec:
     def initiateTakeoff(self):
         self.currentServClient = actionlib.SimpleActionClient("takeoff", TakeoffAction)
         self.goal = TakeoffGoal()
+        self.prevCommand = ""
+        self.sendAction()
+        return
+
+    def initiateLand(self):
+        self.currentServClient = actionlib.SimpleActionClient("land", LandAction)
+        self.goal = LandGoal()
         self.prevCommand = ""
         self.sendAction()
         return
