@@ -63,12 +63,11 @@ class confExec:
             self.prevExectime = self.execTime
             self.initiateExecTrajectory()
 
-        if self.currentCommand == "Cancel":
-            self.currentServClient.cancel_goal()
-
 
         if self.currentCommand == "Abort":
-            rospy.logerr("Got abort")
+            confMsg = String()
+            confMsg.data = "Confirmed Abort"
+            self.respPub.publish(confMsg)
             self.sendAbort()
 
         # if (self.prevCommand == "Takeoff" or self.prevCommand == "Execute") and self.currentCommand == "Confirm":
@@ -106,7 +105,6 @@ class confExec:
         return
 
     def sendAbort(self):
-        rospy.logerr(self.currentCommand)
         self.currentServClient.cancel_goal()
         return
 
