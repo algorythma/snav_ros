@@ -38,38 +38,38 @@ class confExec:
         if self.execTime == self.prevExectime:
             return
 
-        if self.prevCommand == "":
-            if self.currentCommand == "Land":
-                confMsg = String()
-                confMsg.data = "Confirmed Land"
-                self.respPub.publish(confMsg)
-                self.prevCommand = self.currentCommand
-                self.prevExectime = self.execTime
-                self.initiateLand()
+        if self.currentCommand == "Land":
+            confMsg = String()
+            confMsg.data = "Confirmed Land"
+            self.respPub.publish(confMsg)
+            self.prevCommand = self.currentCommand
+            self.prevExectime = self.execTime
+            self.initiateLand()
 
-            if self.currentCommand == "Takeoff":
-                confMsg = String()
-                confMsg.data = "Confirmed Takeoff"
-                self.respPub.publish(confMsg)
-                self.prevCommand = self.currentCommand
-                self.prevExectime = self.execTime
-                self.initiateTakeoff()
-
-
-            if self.currentCommand == "Execute":
-                confMsg = String()
-                confMsg.data = "Confirmed Execute"
-                self.respPub.publish(confMsg)
-                self.prevCommand = self.currentCommand
-                self.prevExectime = self.execTime
-                self.initiateExecTrajectory()
-
-            if self.currentCommand == "Cancel":
-                self.currentServClient.cancel_goal()
+        if self.currentCommand == "Takeoff":
+            confMsg = String()
+            confMsg.data = "Confirmed Takeoff"
+            self.respPub.publish(confMsg)
+            self.prevCommand = self.currentCommand
+            self.prevExectime = self.execTime
+            self.initiateTakeoff()
 
 
-            if self.currentCommand == "Abort":
-                self.sendAbort()
+        if self.currentCommand == "Execute":
+            confMsg = String()
+            confMsg.data = "Confirmed Execute"
+            self.respPub.publish(confMsg)
+            self.prevCommand = self.currentCommand
+            self.prevExectime = self.execTime
+            self.initiateExecTrajectory()
+
+        if self.currentCommand == "Cancel":
+            self.currentServClient.cancel_goal()
+
+
+        if self.currentCommand == "Abort":
+            rospy.logerr("Got abort")
+            self.sendAbort()
 
         # if (self.prevCommand == "Takeoff" or self.prevCommand == "Execute") and self.currentCommand == "Confirm":
         #     self.sendAction()
@@ -81,21 +81,18 @@ class confExec:
     def initiateTakeoff(self):
         self.currentServClient = actionlib.SimpleActionClient("takeoff", TakeoffAction)
         self.goal = TakeoffGoal()
-        self.prevCommand = ""
         self.sendAction()
         return
 
     def initiateLand(self):
         self.currentServClient = actionlib.SimpleActionClient("land", LandAction)
         self.goal = LandGoal()
-        self.prevCommand = ""
         self.sendAction()
         return
 
     def initiateExecTrajectory(self):
         self.currentServClient = actionlib.SimpleActionClient("execute_mission", ExecuteMissionAction)
         self.goal = ExecuteMissionGoal()
-        self.prevCommand = ""
         self.sendAction()
         return
 
@@ -109,6 +106,7 @@ class confExec:
         return
 
     def sendAbort(self):
+        rospy.logerr(self.currentCommand)
         self.currentServClient.cancel_goal()
         return
 
