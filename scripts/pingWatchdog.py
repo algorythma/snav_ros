@@ -38,7 +38,7 @@ class landChecker:
 
     def initiateLand(self):
         print "Sending land"
-        self.landClient.send_goal(LandGoal())
+        #self.landClient.send_goal(LandGoal())
         return
 
 
