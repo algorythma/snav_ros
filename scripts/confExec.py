@@ -64,6 +64,9 @@ class confExec:
                 self.prevExectime = self.execTime
                 self.initiateExecTrajectory()
 
+            if self.currentCommand == "Cancel":
+                self.currentServClient.cancel_goal()
+
 
             if self.currentCommand == "Abort":
                 self.sendAbort()
